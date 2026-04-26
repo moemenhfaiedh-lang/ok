@@ -1,0 +1,39 @@
+body { background-color: #f0f2f5; font-family: 'Inter', sans-serif; }
+.exercise-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  transition: transform 0.2s;
+}
+.exercise-card:hover { transform: translateY(-5px); }
+input { 
+  width: 100%; padding: 10px; margin: 5px 0; 
+  border-radius: 8px; border: 1px solid #ddd; 
+}
+button {
+  background: #00cec9; color: white; padding: 10px 20px;
+  border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
+}
+[data-bs-theme='dark'] body {
+  background-color: #121212; 
+}
+
+
+[data-bs-theme='dark'] .card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+}
+
+[data-bs-theme='dark'] .list-group-item {
+  background-color: #1e1e1e;
+  color: #f8f9fa;
+  border-color: #333;
+}
+
+
+[data-bs-theme='dark'] aside {
+  background-color: #181818 !important;
+  border-right: 1px solid #333 !important;
+}
