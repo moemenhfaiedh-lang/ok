@@ -59,7 +59,7 @@ const Profile = () => {
               <div className="card border-0 shadow-sm rounded-4 p-4 h-100">
                 <h5 className="fw-bold mb-3">Security</h5>
                 <button className="btn btn-sm btn-outline-primary w-100 mb-2">Change Password</button>
-                <button className="btn btn-sm btn-outline-dark w-100">Enable 2FA</button>
+                <button className="btn btn-sm btn-outline-primary w-100 mb-2">Enable 2FA</button>
               </div>
             </div>
           </div>

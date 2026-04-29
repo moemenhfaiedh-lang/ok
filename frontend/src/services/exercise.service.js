@@ -1,36 +1,62 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/exercises/';
+// Ensure there is no double slash at the end if you append IDs later
+const API_URL = 'http://localhost:5000/api/exercises';
 
-const getAuthHeaders = () => ({
-  headers: {
-    'x-auth-token': localStorage.getItem('token'),
-    'Content-Type': 'application/json',
-  },
-});
+const getAuthHeaders = () => {
+  const token = localStorage.getItem('token');
+  return {
+    headers: {
+      'x-auth-token': token,
+      'Content-Type': 'application/json',
+    },
+  };
+};
 
 const exerciseService = {
+  // Fetch all exercises for the logged-in user
   getExercises: async () => {
-    const response = await axios.get(API_URL, getAuthHeaders());
-    return response.data;
+    try {
+      const response = await axios.get(API_URL, getAuthHeaders());
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching exercises:", error.response?.data || error.message);
+      throw error;
+    }
   },
 
-  
+  // Add a new exercise
   addExercise: async (exerciseData) => {
-    const response = await axios.post(API_URL, exerciseData, getAuthHeaders());
-    return response.data;
+    try {
+      const response = await axios.post(API_URL, exerciseData, getAuthHeaders());
+      return response.data;
+    } catch (error) {
+      console.error("Error adding exercise:", error.response?.data || error.message);
+      throw error;
+    }
   },
 
-  
+  // Delete an exercise by ID
   deleteExercise: async (id) => {
-    const response = await axios.delete(`${API_URL}${id}`, getAuthHeaders());
-    return response.data;
+    try {
+      // Using backticks to ensure the ID is appended correctly to the URL
+      const response = await axios.delete(`${API_URL}/${id}`, getAuthHeaders());
+      return response.data;
+    } catch (error) {
+      console.error("Error deleting exercise:", error.response?.data || error.message);
+      throw error;
+    }
   },
 
-  
+  // Update an existing exercise
   updateExercise: async (id, updatedData) => {
-    const response = await axios.put(`${API_URL}${id}`, updatedData, getAuthHeaders());
-    return response.data;
+    try {
+      const response = await axios.put(`${API_URL}/${id}`, updatedData, getAuthHeaders());
+      return response.data;
+    } catch (error) {
+      console.error("Error updating exercise:", error.response?.data || error.message);
+      throw error;
+    }
   }
 };
 
