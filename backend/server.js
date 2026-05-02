@@ -1,3 +1,6 @@
+import express from "express";
+import path from "path";
+import cors from "cors";
 
 require('dotenv').config();
 
@@ -28,6 +31,15 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/exercises', require('./routes/exerciseRoutes'));
 
 app.use('/api/user', require('./routes/userRoutes'));
+
+
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 
 app.get('/', (req, res) => {

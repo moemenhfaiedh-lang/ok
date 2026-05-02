@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Ensure there is no double slash at the end if you append IDs later
-const API_URL = 'http://localhost:5000/api/exercises';
+const API_URL = '/api/exercises';
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');

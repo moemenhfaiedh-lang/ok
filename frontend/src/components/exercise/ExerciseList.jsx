@@ -6,7 +6,7 @@ const ExerciseList = ({ exercises, setExercises }) => {
   
   const onDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/exercises/${id}`, {
+      await axios.delete(`/api/exercises/${id}`, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setExercises(exercises.filter(ex => ex._id !== id));

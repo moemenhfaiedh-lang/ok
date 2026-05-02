@@ -6,7 +6,7 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get('http://localhost:5000/api/user/me', {
+      const res = await axios.get('/api/user/me', {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setUser(res.data);
